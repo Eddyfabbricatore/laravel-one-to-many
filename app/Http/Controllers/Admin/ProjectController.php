@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Http\Requests\ProjectRequest;
 use App\Functions\Helper;
 use Illuminate\Support\Facades\Storage;
@@ -29,7 +30,8 @@ class ProjectController extends Controller
         $method = 'POST';
         $route = route('admin.projects.store');
         $project = null;
-        return view('admin.projects.create-edit', compact('title', 'method', 'route', 'project'));
+        $technologies = Technology::all();
+        return view('admin.projects.create-edit', compact('title', 'method', 'route', 'project', 'technologies'));
     }
 
     /**
@@ -72,7 +74,8 @@ class ProjectController extends Controller
         $title = 'Modifica progetto';
         $method = 'PUT';
         $route = route('admin.projects.update', $project);
-        return view('admin.projects.create-edit', compact('title', 'method', 'route', 'project'));
+        $technologies = Technology::all();
+        return view('admin.projects.create-edit', compact('title', 'method', 'route', 'project', 'technologies'));
     }
 
     /**

@@ -50,14 +50,14 @@
                                 <form
                                   action="{{ route('admin.technologies.update', $technology) }}"
                                   method="POST"
-                                  id="form-edit">
+                                  id="form-edit-{{ $technology->id }}">
                                     @csrf
                                     @method('PUT')
                                     <input class="form-hidden" type="text" value="{{ $technology->name }}" name="name">
                                 </form>
                             </td>
                             <td class="d-flex">
-                                <button class="btn btn-warning me-3" onclick="submitForm()" id="button-addon2"><i class="fa-solid fa-pencil"></i></button>
+                                <button class="btn btn-warning me-3" onclick="submitForm({{ $technology->id }})" id="button-addon2"><i class="fa-solid fa-pencil"></i></button>
 
                                 @include('admin.partials.form_delete', [
                                     'route' => route('admin.technologies.destroy', $technology),
@@ -74,8 +74,8 @@
     {{ $technologies->links() }}
 
     <script>
-        function submitForm(){
-            const form = document.getElementById('form-edit');
+        function submitForm(id){
+            const form = document.getElementById('form-edit-' + id);
             form.submit();
         }
     </script>

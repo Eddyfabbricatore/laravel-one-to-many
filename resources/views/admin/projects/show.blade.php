@@ -5,7 +5,11 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="mb-5">{{ $project->name }}</h1>
+    <h1 class="mb-5">{{ $project->name }} <a class="btn btn-warning ms-3" href="{{ route('admin.projects.edit', $project) }}"><i class="fa-solid fa-pencil"></i></a></h1>
+
+    @if($project->technology)
+        <p>Tecnologia: <strong>{{ $project->technology->name }}</strong></p>
+    @endif
 
     <div class="card mb-3" style="width: 80vw;">
         <div class="row">

@@ -30,14 +30,19 @@
 
             <div class="col-3 mb-3">
                 <label class="form-label" for="image">Immagine Progetto</label>
-                <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" value="{{ old('image', $project?->image) }}">
+                <input
+                  class="form-control @error('image') is-invalid @enderror"
+                  type="file"
+                  id="image"
+                  name="image"
+                  value="{{ old('image', $project?->image) }}"
+                  onchange="showImage(event)">
                 @error('image')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
 
-                @if($project)
-                    <img class="w-25" src="{{ asset('storage/' . $project?->image) }}" alt="{{ $project->name }}">
-                @endif
+                <!-- In caso di errore nel caricamento dell'immagine non carico nulla -->
+                <img class="w-50 h-50" id="thumb" onerror="this.src=''" src="{{ asset('storage/' . $project?->image) }}" alt="{{ $project?->name }}">
             </div>
 
             <div class="col-3 mb-3">
@@ -46,6 +51,17 @@
                 @error('description')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
+            </div>
+
+            <div class="col-3 mb-3">
+                <label class="form-label" for="technology_id">Tecnologia Progetto</label>
+
+                <select class="form-select" id="technology_id" name="technology_id">
+                    <option value="">Seleziona una tecnologia</option>
+                    @foreach($technologies as $technology)
+                        <option value="{{ $technology->id }}" {{ old('technology_id', $project?->technology_id) == $technology->id ? 'selected' : '' }}>{{ $technology->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="col-3 mb-3">
@@ -68,3 +84,12 @@
         </div>
     </form>
 @endsection
+
+<script>
+    function showImage(event){
+        const thumb = document.getElementById('thumb');
+
+        // Associo a src l'immagine caricata
+        thumb.src = URL.createObjectURL(event.target.files[0]);
+    }
+</script>
