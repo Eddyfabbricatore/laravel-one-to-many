@@ -1,0 +1,45 @@
+@import '~bootstrap/scss/bootstrap';
+
+header{
+    height: 50px;
+    background-color: #212529;
+}
+
+header,
+aside{
+    a{
+        color: #fff !important;
+        text-decoration: none;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+ul{
+    list-style: none;
+}
+
+.main-wrapper{
+    height: calc(100vh - 50px);
+
+    .form-hidden{
+        width: 100%;
+        border: none;
+
+        &:focus{
+            border: none;
+            outline: none;
+        }
+    }
+}
+
+aside{
+    width: 250px;
+    height: 100%;
+}
+
+.main-content{
+    width: calc(100% - 250px);
+}
