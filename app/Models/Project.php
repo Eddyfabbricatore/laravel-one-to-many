@@ -10,16 +10,16 @@ class Project extends Model
 {
     use HasFactory;
 
-    // Relazione con la tabella technology
-    // La funzione deve essere al singolare perchè un progetto ha una sola tecnologia
+    // Relazione con la tabella type
+    // La funzione deve essere al singolare perchè un progetto ha una sola tipologia
     // A questa funzione accederò come proprietà della classe Project
-    public function technology(){
-        return $this->belongsTo(Technology::class);
+    public function type(){
+        return $this->belongsTo(Type::class);
     }
 
     protected $fillable = [
         'name',
-        'technology_id',
+        'type_id',
         'image',
         'image_original_name',
         'slug',

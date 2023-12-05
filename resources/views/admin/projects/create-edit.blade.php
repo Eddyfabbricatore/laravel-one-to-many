@@ -54,12 +54,12 @@
             </div>
 
             <div class="col-3 mb-3">
-                <label class="form-label" for="technology_id">Tecnologia Progetto</label>
+                <label class="form-label" for="type_id">Tipologia Progetto</label>
 
-                <select class="form-select" id="technology_id" name="technology_id">
-                    <option value="">Seleziona una tecnologia</option>
-                    @foreach($technologies as $technology)
-                        <option value="{{ $technology->id }}" {{ old('technology_id', $project?->technology_id) == $technology->id ? 'selected' : '' }}>{{ $technology->name }}</option>
+                <select class="form-select" id="type_id" name="type_id">
+                    <option value="">Seleziona una tipologia</option>
+                    @foreach($types as $type)
+                        <option value="{{ $type->id }}" {{ old('type_id', $project?->type_id) == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
                     @endforeach
                 </select>
             </div>

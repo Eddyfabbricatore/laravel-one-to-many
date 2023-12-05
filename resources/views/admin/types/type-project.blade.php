@@ -7,24 +7,24 @@
         </div>
     @endif
 
-    <h1 class="mb-5">Elenco Progetti per tecnologia</h1>
+    <h1 class="mb-5">Elenco progetti per tipologia</h1>
 
     <table class="table">
         <thead>
             <tr>
             <th scope="col">Id</th>
-            <th scope="col">Tecnologia</th>
+            <th scope="col">Tipologia</th>
             </tr>
         </thead>
 
         <tbody>
-            @foreach($technologies as $technology)
+            @foreach($types as $type)
                 <tr>
-                    <td>{{ $technology->id }}</td>
-                    <td>{{ $technology->name }}</td>
+                    <td>{{ $type->id }}</td>
+                    <td>{{ $type->name }}</td>
                     <td>
                     <ul class="list-group">
-                        @foreach($technology?->projects as $project)
+                        @foreach($type?->projects as $project)
                             <a href="{{ route('admin.projects.show', $project) }}">{{ $project?->name }}</a>
                         @endforeach
                     </ul>

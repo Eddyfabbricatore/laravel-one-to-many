@@ -7,8 +7,8 @@
 @section('content')
     <h1 class="mb-5">{{ $project->name }} <a class="btn btn-warning ms-3" href="{{ route('admin.projects.edit', $project) }}"><i class="fa-solid fa-pencil"></i></a></h1>
 
-    @if($project->technology)
-        <p>Tecnologia: <strong>{{ $project->technology->name }}</strong></p>
+    @if($project->type)
+        <p>Tipologia: <strong>{{ $project->type->name }}</strong></p>
     @endif
 
     <div class="card mb-3" style="width: 80vw;">

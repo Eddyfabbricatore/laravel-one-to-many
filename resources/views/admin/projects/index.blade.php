@@ -13,7 +13,7 @@
         <thead>
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Tecnologia</th>
+                <th scope="col">Tipologia</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Data Progetto</th>
                 <th scope="col">Azioni</th>
@@ -28,7 +28,7 @@
 
                 <tr>
                     <td>{{ $project->id }}</td>
-                    <td>{{ $project->technology?->name ?? '-' }}</td>
+                    <td>{{ $project->type?->name ?? '-' }}</td>
                     <td>{{ $project->name }}</td>
                     <td>{{ date_format($date, 'd/m/Y') }}</td>
                     <td class="d-flex">

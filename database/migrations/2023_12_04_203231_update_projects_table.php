@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
             // Creo la colonna della FK
-            $table->unsignedBigInteger('technology_id')->nullable()->after('id');
+            $table->unsignedBigInteger('type_id')->nullable()->after('id');
 
             // Assegno la FK alla colonna creata
-            $table->foreign('technology_id')->references('id')->on('technologies')->onDelete('set null');
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('set null');
         });
     }
 
@@ -27,10 +27,10 @@ return new class extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
             // Elinimo la FK
-            $table->dropForeign(['technology_id']);
+            $table->dropForeign(['type_id']);
 
             // Elimino la colonna della FK
-            $table->dropColumn('technology_id');
+            $table->dropColumn('type_id');
         });
     }
 };
